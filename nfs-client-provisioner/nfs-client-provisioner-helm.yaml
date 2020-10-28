@@ -1,0 +1,14 @@
+---
+apiVersion: helm.cattle.io/v1
+kind: HelmChart
+metadata:
+  name: nfs-client-provisioner-helmchart
+  namespace: kube-system
+spec:
+  chart: nfs-client-provisioner
+  targetNamespace: nfs-client-provisioner
+  repo: https://github.com/helm/charts/tree/master/stable/nfs-client-provisioner
+  set:
+    nfs.server: 192.168.178.136
+    nfs.path: /mnt/nfs_share
+    image.repository: quay.io/external_storage/nfs-client-provisioner-arm
