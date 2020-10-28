@@ -2,7 +2,7 @@
 apiVersion: helm.cattle.io/v1
 kind: HelmChart
 metadata:
-  name: lazylibrarian-helmchart
+  name: lazylibrarian
   namespace: kube-system
 spec:
   chart: lazylibrarian
