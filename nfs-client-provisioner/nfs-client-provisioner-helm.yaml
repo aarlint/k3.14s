@@ -5,7 +5,7 @@ metadata:
   name: nfs-client-provisioner-helmchart
   namespace: kube-system
 spec:
-  chart: stable/nfs-client-provisioner
+  chart: nfs-client-provisioner
   targetNamespace: nfs-client-provisioner
   repo: https://kubernetes-charts.storage.googleapis.com
   set:
