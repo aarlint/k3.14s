@@ -1,0 +1,14 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: lazylibrarian-ingress
+  namespace: default
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`lazylibrarian.aa.ia4.eu`)
+      kind: Rule
+      services:
+        - name: lazylibrarian
+          port: 5299
