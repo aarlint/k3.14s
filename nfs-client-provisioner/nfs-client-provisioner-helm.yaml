@@ -5,9 +5,9 @@ metadata:
   name: nfs-client-provisioner-helmchart
   namespace: kube-system
 spec:
-  chart: nfs-client-provisioner
+  chart: stable/nfs-client-provisioner
   targetNamespace: nfs-client-provisioner
-  repo: stable/nfs-client-provisioner
+  repo: https://kubernetes-charts.storage.googleapis.com
   set:
     nfs.server: 192.168.178.136
     nfs.path: /mnt/nfs_share
