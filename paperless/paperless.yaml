@@ -155,7 +155,7 @@ spec:
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: lazylibrarian-ingress
+  name: paperless-ingress
   namespace: default
 spec:
   entryPoints:
