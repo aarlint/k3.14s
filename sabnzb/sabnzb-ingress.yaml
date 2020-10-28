@@ -1,0 +1,14 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: sabnzbd-ingress
+  namespace: default
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`sabnzbd.aa.ia4.eu`)
+      kind: Rule
+      services:
+        - name: sabnzbd
+          port: 8080
