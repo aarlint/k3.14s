@@ -71,10 +71,12 @@ spec:
           mountPath: /mnt/storage/data/consume
           subPath: paperless
         livenessProbe:
+          initialDelaySeconds: 10
           exec:
             command:
-            - ls
-            - /mnt/storage/data/consume
+            - "pgrep"
+            - "-s"
+            - "1"
       volumes:
       - name: consume
         persistentVolumeClaim:
