@@ -1,0 +1,41 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: plex-ingress
+  namespace: default
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`plex.aa.ia4.eu`)
+      kind: Rule
+      services:
+        - name: plex
+          port: 8080
+
+---
+apiVersion: helm.cattle.io/v1
+kind: HelmChart
+metadata:
+  name: plex
+  namespace: kube-system
+spec:
+  chart: plex
+  targetNamespace: default
+  repo: https://k8s-at-home.com/charts/
+  set:
+    persistence.existingClaim: plex
+    
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: plex
+  annotations:
+    volume.beta.kubernetes.io/storage-class: "nfs-client"
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
